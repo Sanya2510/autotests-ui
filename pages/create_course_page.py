@@ -40,7 +40,7 @@ class CreateCoursePage(BasePage):
         )
         self.create_course_description_textarea = (
             # При поиске поля описания будет найдено два тега textarea, берем первый из них
-            page.get_by_test_id('create-course-form-description-input').locator('textaria').first
+            page.get_by_test_id('create-course-form-description-input').locator('textarea').first
         )
         self.create_course_max_score_input = page.get_by_test_id('create-course-form-max-score-input').locator('input')
         self.create_course_min_score_input = page.get_by_test_id('create-course-form-min-score-input').locator('input')
