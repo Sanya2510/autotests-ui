@@ -18,7 +18,6 @@ class CoursesListPage(BasePage):
         self.sidebar = SidebarComponent(page)
         self.toolbar_view = CoursesListToolbarViewComponent(page)
 
-
     def check_visible_emty_view(self):
         self.empty_view.check_vivsble(
             title='There is no results',
