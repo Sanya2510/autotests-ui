@@ -5,15 +5,18 @@ from pages.courses.create_course_page import CreateCoursePage
 from tools.allure.tags import AllureTag
 from tools.allure.epics import AllureEpic
 from tools.allure.stories import AllureStory
-from tools.allure.features import AllureFeatures
+from tools.allure.features import AllureFeature
 from allure_commons.types import Severity
 
 @pytest.mark.courses
 @pytest.mark.regression
 @allure.tag(AllureTag.REGRESSION, AllureTag.COURSES)
 @allure.epic(AllureEpic.LMS)
-@allure.feature(AllureFeatures.COURSES)
+@allure.feature(AllureFeature.COURSES)
 @allure.story(AllureStory.COURSES)
+@allure.parent_suite(AllureEpic.LMS)
+@allure.suite(AllureFeature.COURSES)
+@allure.sub_suite(AllureStory.COURSES)
 class TestCourses:
     @allure.title('Check dusplaying of empty courses list')
     @allure.severity(Severity.NORMAL)
