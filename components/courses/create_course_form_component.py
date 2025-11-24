@@ -23,11 +23,7 @@ class CreateCourseFormComponent(BaseComponent):
         self.min_score_input = Input(page, 'create-course-form-min-score-input', 'Min score')
 
     # Метод проверки корректности отображения формы и валидности данных
-    @allure.step(
-        'Check visible creat course at title "{title}", '
-        'estimated_time "{estimated_time}", '
-        'description "{description}", max_score "{max_score}" and min_score "{min_score}"'
-    )
+    @allure.step('Check visible create course form')
     def check_visible(self, title, estimated_time, description, max_score, min_score):
         self.title_input.check_visible()
         self.title_input.check_have_value(title)
