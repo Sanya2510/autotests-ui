@@ -8,9 +8,13 @@ from tools.playwright.pages import initialaize_playwright_page
 from tools.routes import AppRoute
 
 
-@pytest.fixture
-def chromium_page(request: SubRequest, playwright: Playwright) -> Page:  # type: ignore
-    yield from initialaize_playwright_page(playwright, test_name=request.node.name)  # type: ignore
+@pytest.fixture(params=settings.browsers)
+def page(request: SubRequest, playwright: Playwright) -> Page:  # type: ignore
+    yield from initialaize_playwright_page(  # type: ignore
+        playwright,
+        test_name=request.node.name,
+        browser_type=request.param
+    )
 
 
 @pytest.fixture(scope='session')
@@ -31,11 +35,12 @@ def initialize_browser_state(playwright: Playwright) -> Page:  # type: ignore
     context.storage_state(path=settings.browser_state_file)
 
 
-@pytest.fixture
-def chromium_page_with_state(request: SubRequest, initialize_browser_state,
+@pytest.fixture(params=settings.browsers)
+def page_with_state(request: SubRequest, initialize_browser_state,
                              playwright: Playwright) -> Page:  # type: ignore
     yield from initialaize_playwright_page(  # type: ignore
         playwright,
         test_name=request.node.name,
+        browser_type=request.param,
         storage_state=settings.browser_state_file
     )
