@@ -22,7 +22,7 @@ from tools.routes import AppRoute
 @allure.suite(AllureFeature.COURSES)
 @allure.sub_suite(AllureStory.COURSES)
 class TestCourses:
-    @allure.title('Check dusplaying of empty courses list')
+    @allure.title('Check displaying of empty courses list')
     @allure.severity(Severity.NORMAL)
     def test_empty_courses_list(self, courses_list_page: CoursesListPage):
         courses_list_page.visit(AppRoute.COURSES)
